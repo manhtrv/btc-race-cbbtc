@@ -1,7 +1,7 @@
 import { runBars, type Bar, type BarsState } from './vendor/makefun-bars.ts';
 
 const LOOKBACK = 24;
-const ENTRY_BPS = 25n;
+const ENTRY_BPS = 20n;
 const REVERSAL_BPS = 55n;
 const STOP_BPS = 300n;
 const MAX_SLIPPAGE_BPS = 500;
