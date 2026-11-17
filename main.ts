@@ -1,7 +1,7 @@
 import { runBars, type Bar, type BarsState } from './vendor/makefun-bars.ts';
 
-const LOOKBACK = 24;
-const ENTRY_BPS = 20n;
+const LOOKBACK = 12;
+const ENTRY_BPS = 0n;
 const REVERSAL_BPS = 55n;
 const STOP_BPS = 300n;
 const MAX_SLIPPAGE_BPS = 500;
@@ -31,7 +31,7 @@ await runBars({
     if (held) {
       const marked = state.value('CBBTC', held.qty);
       const stopped = marked * SCALE < held.cost * (SCALE - STOP_BPS);
-      const reversed = returnBelow(close, closes[closes.length - 7]!, REVERSAL_BPS);
+      const reversed = returnBelow(close, closes[closes.length - 4]!, REVERSAL_BPS);
       if (stopped || reversed) {
         return [{ side: 'sell', symbol: 'CBBTC', qty: held.qty, max_slippage_bps: MAX_SLIPPAGE_BPS }];
       }
